@@ -1,0 +1,58 @@
+*{
+	margin:0;
+	padding:0;
+	border:0;
+}
+
+html,body, .fullfil, .page{
+	width: 100%;
+	height: 100%;
+}
+
+.overflowhidden{
+	overflow: hidden;
+}
+
+.fix {
+	position: fixed;
+}
+
+.top {
+	top: 0;
+}
+
+.firstpage{
+	background: url(../img/DSC_1867.jpg) no-repeat fixed top;
+}
+
+.secondpage{
+	background-color: #2980B9;
+}
+
+.thirdpage{
+	background-color: #e74c3c;
+}
+
+.forthpage{
+	background-color: #1abc9c;
+}
+
+.navi{
+	height: 20px;
+	width: 100%;
+	background-color: #000000;
+	color:#ffffff;
+}
+
+.navi ul{
+	list-style: none;
+}
+
+.navi li{
+	width: 100px;
+	display: inline;
+}
+
+.navi a{
+	color:#ffffff;
+}

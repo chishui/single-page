@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html lang="zh">
+<head>
+  	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width,initial-scale=1">
+  	<title>This is Me</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<body>
+	<div class="navi fix top">
+		<ul>
+			<li><a href="javascript:onclickpage(1);">page1</a></li>
+			<li><a href="javascript:onclickpage(2);">page2</a></li>
+			<li><a href="javascript:onclickpage(3);">page3</a></li>
+			<li><a href="javascript:onclickpage(4);">page4</a></li>
+		</ul>
+	</div>
+	<div class="page firstpage"></div>
+	<div class="page secondpage"></div>
+	<div class="page thirdpage"></div>
+	<div class="page forthpage"></div>
+
+	<script>
+	var interval = 1500;
+	function onclickpage(pageid){
+		var pages = new Array(".firstpage", ".secondpage", ".thirdpage", ".forthpage");
+		$('html, body').animate({
+		    scrollTop: $(pages[pageid-1]).offset().top
+		 }, interval);
+	}
+
+	</script>
+</body>
+</html>
