@@ -8,12 +8,13 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 </head>
 <body>
+	<div class="info fix"></div>
 	<div class="navi fix top">
 		<ul>
-			<li><a href="javascript:onclickpage(1);">page1</a></li>
-			<li><a href="javascript:onclickpage(2);">page2</a></li>
-			<li><a href="javascript:onclickpage(3);">page3</a></li>
-			<li><a href="javascript:onclickpage(4);">page4</a></li>
+			<li><a href="javascript:onclickpage(1);"><span class="page1 select">page1</span></a></li>
+			<li><a href="javascript:onclickpage(2);"><span class="page2">page2</span></a></li>
+			<li><a href="javascript:onclickpage(3);"><span class="page3">page3</span></a></li>
+			<li><a href="javascript:onclickpage(4);"><span class="page4">page4</span></a></li>
 		</ul>
 	</div>
 	<div class="page firstpage"></div>
@@ -22,14 +23,49 @@
 	<div class="page forthpage"></div>
 
 	<script>
-	var interval = 1500;
+
+	var interval = 1000,//scroll interval
+		pages = new Array(".firstpage", ".secondpage", ".thirdpage", ".forthpage"),
+		navis = new Array(".page1", ".page2", ".page3", ".page4"),
+		count = 4,
+		lastpage = 0,
+		docElem = document.documentElement;
+
+	$(document).scroll(function(){
+		var currentoffset = scrollY();
+		var currentpage = -1;
+
+		for (var i = 0; i < pages.length; ++i) {
+			if (i == pages.length - 1){
+				if (currentoffset >= $(pages[i]).offset().top){
+					currentpage = i;
+				}
+			}
+			else{
+				if (currentoffset >= $(pages[i]).offset().top && currentoffset < $(pages[i+1]).offset().top){
+					currentpage = i;
+					break;
+				}
+			}
+		};
+
+		if (currentpage != lastpage && currentpage != -1){
+			$(navis[currentpage]).addClass("select");
+			$(navis[lastpage]).removeClass("select");
+			lastpage = currentpage;
+		}
+
+	});
+
 	function onclickpage(pageid){
-		var pages = new Array(".firstpage", ".secondpage", ".thirdpage", ".forthpage");
 		$('html, body').animate({
 		    scrollTop: $(pages[pageid-1]).offset().top
 		 }, interval);
 	}
 
+	function scrollY() {
+		return window.pageYOffset || docElem.scrollTop;
+	}
 	</script>
 </body>
 </html>
